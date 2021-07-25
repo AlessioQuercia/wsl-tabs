@@ -25,9 +25,15 @@ z_store() {
 }
 alias z=z_store
 ```
-You can put these two functions in your _.bashrc_ or _.zshrc_ to use **sd** automatically every time you access a directory.
+You can put these two functions in your _.bashrc_ or _.zshrc_ to use **sd** automatically every time you access a directory. 
 
-This "trick" works both for new tabs and split panes. However, there is a known problem: if you open a tab in "Home", cd to "Beautiful_directory", then open a new tab (it will open in "Beautiful_directory" as expected), then from the new tab cd back to "Home", then if you switch the first tab (which is still in "Beautiful_directory") and you open a new tab (or split pane) from there, it will open a new tab (or split pane) in "Home", because it is the last accessed directory (using cd). You can avoid this by manually calling **sd** before opening a new tab (or just using **z** to get back to your desired directory).
+This "trick" works both for new tabs and split panes. An example is shown below:
+
+<img src="gifs/test.gif" alt="test" width="800"/>
+
+However, there is a known problem: if you open a tab in "Home", cd to "Beautiful_directory", then open a new tab (it will open in "Beautiful_directory" as expected), then from the new tab cd back to "Home", then if you switch the first tab (which is still in "Beautiful_directory") and you open a new tab (or split pane) from there, it will open a new tab (or split pane) in "Home", because it is the last accessed directory (using cd). You can avoid this by manually calling **sd** before opening a new tab (or just using **z** to get back to your desired directory), as shown below:
+
+<img src="gifs/bug.gif" alt="bug" width="800"/>
 
 Lastly, I wrote a batch script to achieve the same result with Command Prompt. Unfortunately, naming the batch file _cd_ and updating the **PATH** accordingly does not override Windows **cd** function, and I did not find a way to override it, therefore I wrote the following script:
 ```
@@ -40,4 +46,7 @@ sed -i -E 's;%startDir%: .*^";%startDir%: %lastDir%;g' %settings%
 ```
 where \<USERNAME\> has to be replaced by your account username. 
   
-I named the batch script _cdd.bat_ and put its directory to the PATH environment variable. After doing so, it is possible to just call _cdd_ to achieve the desired result.
+I named the batch script _cdd.bat_ and put its directory to the PATH environment variable. After doing so, it is possible to just call _cdd_ to achieve the desired result. An example is shown below:
+
+
+<img src="gifs/cdd.gif" alt="cdd" width="800"/>
