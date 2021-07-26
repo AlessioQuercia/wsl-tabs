@@ -5,7 +5,7 @@ Inspired by [this](https://github.com/microsoft/terminal/issues/3158#issuecommen
 
 ```
 sd() {
-  settings='/c/Users/<USERNAME>/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json'
+  settings='/mnt/c/Users/<USERNAME>/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json'
   startDir=\"startingDirectory\"
   sed -i -E "s|$startDir: .*\"|$startDir: \"$(wslpath -m "$(pwd)")\"|g" $settings
 }
