@@ -1,8 +1,12 @@
 # Open a new tab (or split pane) in the same directory in WSL
 An essential feature for me in terminals is the possibility to quickly open a new tab by pressing ctrl+t (much like in a browser) to make a new search. Differently from the browsers, where you often want to start from the home page, in terminals it is useful to start from the previously used directory. Windows Subsystem for Linux allows both to open new tabs (ctrl+t) and to split pane vertically (alt+plus) and horizontally (alt+-). However, at the moment it does not offer (as far as I know) a ready-to-use feature to open a new tab (or split pane) in the same directory you were working on. By default, WSL will open the new tabs/panes in the %USERPROFILE% directory, as specified in the settings, but it is also possible to specify the _startingDirectory_ in the _settings.json_ file. The only problem is that it will be always the same, unless you change it every time.
 
-Inspired by [this](https://github.com/microsoft/terminal/issues/3158#issuecomment-654539219) and [this](https://stackoverflow.com/questions/57120932/how-to-spawn-a-new-tab-in-same-directory-as-previous-directory), I wrote the following function:
+Inspired by the [references](#ref), I wrote some functions that allow creating a new tab (or split pane) in the last accessed directory for the following shells:
+- [Bash](#bash_zsh), [zsh](#bash_zsh)
+- [Command Prompt](#cmd)
 
+<a name="bash_zsh"></a>
+### Bash, zsh
 ```
 sd() {
   settings='/mnt/c/Users/<USERNAME>/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json'
@@ -35,6 +39,9 @@ However, there is a known problem: if you open a tab in "Home", cd to "Beautiful
 
 <img src="gifs/bug.gif" alt="bug" width="800"/>
 
+<a name="cmd"></a>
+### Command Prompt
+
 Lastly, I wrote a batch script to achieve the same result with Command Prompt. Unfortunately, naming the batch file _cd_ and updating the **PATH** accordingly does not override Windows **cd** function, and I did not find a way to override it, therefore I wrote the following script:
 ```
 @echo off
@@ -50,3 +57,8 @@ I named the batch script _cdd.bat_ and put its directory to the PATH environment
 
 
 <img src="gifs/cdd.gif" alt="cdd" width="800"/>
+
+<a name="ref"></a>
+## References
+- https://github.com/microsoft/terminal/issues/3158#issuecomment-654539219
+- https://stackoverflow.com/questions/57120932/how-to-spawn-a-new-tab-in-same-directory-as-previous-directory
