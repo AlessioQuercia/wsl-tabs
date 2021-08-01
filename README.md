@@ -1,4 +1,4 @@
-# Open a new tab (or split pane) in the same directory in WSL
+# Open a new tab in the same directory in WSL
 An essential feature for me in terminals is the possibility to quickly open a new tab by pressing ctrl+t (much like in a browser) to make a new search. Differently from the browsers, where you often want to start from the home page, in terminals it is useful to start from the previously used directory. Windows Subsystem for Linux allows both to open new tabs (ctrl+t) and to split pane vertically (alt+plus) and horizontally (alt+-). However, at the moment it does not offer (as far as I know) a ready-to-use feature to open a new tab (or split pane) in the same directory you were working on. By default, WSL will open the new tabs/panes in the %USERPROFILE% directory, as specified in the settings, but it is also possible to specify the _startingDirectory_ in the _settings.json_ file. The only problem is that it will be always the same, unless you change it every time.
 
 Inspired by the [references](#ref), I wrote some functions that allow creating a new tab (or split pane) in the last accessed directory for the following shells:
